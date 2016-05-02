@@ -1,0 +1,15 @@
+{
+  "name": "recursive-replacement",
+  "version": "0.0.0",
+  "description": "Recursively replaces a string.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Mason <daniel@danielmason.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^2.13.0"
+  }
+}
