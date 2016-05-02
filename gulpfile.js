@@ -1,6 +1,7 @@
 // Includes
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
+var minify = require('gulp-minify');
 
 // Settings
 var tsConfig = {
@@ -9,13 +10,19 @@ var tsConfig = {
     task: 'typescriptTask'
 };
 
+var minifyConfig = {
+    dest: 'js'
+};
+
 // Convert the typescript source into javascript
 gulp.task(tsConfig.task, function () {
-    return gulp.src(tsConfig.src)
-               .pipe(ts({
-                   noImplicitAny: true
-               }))
-               .pipe(gulp.dest(tsConfig.dest));
+    return gulp
+        .src(tsConfig.src)
+        .pipe(ts({
+           noImplicitAny: true
+        }))
+        .pipe(minify())
+        .pipe(gulp.dest(minifyConfig.dest));
 });
 
 // Set a watch task
