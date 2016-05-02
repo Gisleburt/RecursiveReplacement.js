@@ -18,7 +18,7 @@ gulp.task(tsConfig.task, function () {
                .pipe(gulp.dest(tsConfig.dest));
 });
 
-// By default, set a watch
-gulp.task('default', [tsConfig.task], function() {
+// Set a watch task
+gulp.task('watch', [tsConfig.task], function() {
     gulp.watch(tsConfig.src, [tsConfig.task]);
 });
