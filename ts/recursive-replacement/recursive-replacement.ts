@@ -1,12 +1,17 @@
+interface RecursiveData {
+    [key: string]: string|RecursiveData;
+}
+
 class RecursiveReplacement {
 
-    testValue:string;
+    protected replacementData:RecursiveData;
 
-    anotherValue:string;
-
-    constructor(test:string) {
-        this.testValue = test;
-        this.anotherValue = test;
+    /**
+     * Construct a RecursiveReplacement object
+     * @param {{}}replacementData An object containing strings used for replacement
+     */
+    constructor(replacementData:RecursiveData) {
+        this.replacementData = replacementData;
     }
 
 }
