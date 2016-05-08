@@ -1,8 +1,7 @@
 FROM node
 
-WORKDIR /usr/src/app
+RUN npm install --global gulp-cli
 
-RUN npm install --global gulp-cli \
- && npm install
+ADD start-gulp.sh .
 
-ENTRYPOINT gulp watch
+CMD ./start-gulp.sh
