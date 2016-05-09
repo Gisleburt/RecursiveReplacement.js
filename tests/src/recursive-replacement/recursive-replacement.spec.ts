@@ -1,8 +1,13 @@
+/// <reference path="../../../src/recursive-replacement/recursive-replacement.ts"/>
+
 describe('We expect all functions of RecursiveReplacement to work',
     function() {
 
         describe('We can detect if there are replacements in a string',
             function() {
+
+                let recursiveReplacement = new RecursiveReplacement.RecursiveReplacement();
+
                 xit('true is true', function() {
                     expect(false).toEqual(true)
                 })
