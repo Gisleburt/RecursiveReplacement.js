@@ -1,7 +1,8 @@
 // Includes
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
-var minify = require('gulp-minify');
+var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
 
 // Settings
 var tsConfig = {
@@ -21,10 +22,12 @@ var tsTestConfig = {
 gulp.task(tsConfig.task, function () {
     return gulp
         .src(tsConfig.src)
-        .pipe(ts({
-           noImplicitAny: true
-        }))
-        .pipe(minify())
+        .pipe(sourcemaps.init())
+          .pipe(ts({
+              noImplicitAny: true
+          }))
+          .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(tsConfig.dest));
 });
 
@@ -32,10 +35,12 @@ gulp.task(tsConfig.task, function () {
 gulp.task(tsTestConfig.task, function () {
     return gulp
         .src(tsTestConfig.src)
-        .pipe(ts({
-           noImplicitAny: true
-        }))
-        .pipe(minify())
+        .pipe(sourcemaps.init())
+          .pipe(ts({
+             noImplicitAny: true
+          }))
+          .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(tsTestConfig.dest));
 });
 
