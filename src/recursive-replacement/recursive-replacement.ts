@@ -1,10 +1,12 @@
-interface RecursiveData {
+export interface RecursiveData {
     [key: string]: string|RecursiveData;
 }
 
-class RecursiveReplacement {
+export class RecursiveReplacement {
 
     protected replacementData:RecursiveData;
+    
+    protected delimiters = /\{\{[^}]+}}/;
 
     /**
      * Construct a RecursiveReplacement object
@@ -12,6 +14,15 @@ class RecursiveReplacement {
      */
     constructor(replacementData:RecursiveData) {
         this.replacementData = replacementData;
+    }
+
+    /**
+     * 
+     * @param testString
+     */
+    public static doesStringContainReplacements(testString:string)
+    {
+        
     }
 
 }
