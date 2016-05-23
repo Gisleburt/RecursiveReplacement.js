@@ -62,4 +62,4 @@ module RecursiveReplacement {
     }
 }
 
-
+export = RecursiveReplacement;

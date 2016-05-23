@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
+var mocha = require('gulp-mocha');
 
 // Settings
 var tsConfig = {
@@ -18,7 +19,7 @@ var tsTestConfig = {
 };
 
 
-// Source files
+// Build Source
 gulp.task(tsConfig.task, function () {
     return gulp
         .src(tsConfig.src)
@@ -27,11 +28,11 @@ gulp.task(tsConfig.task, function () {
               noImplicitAny: true
           }))
           .pipe(uglify())
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(tsConfig.dest));
 });
 
-// Tests
+// Build Tests
 gulp.task(tsTestConfig.task, function () {
     return gulp
         .src(tsTestConfig.src)
@@ -40,12 +41,19 @@ gulp.task(tsTestConfig.task, function () {
              noImplicitAny: true
           }))
           .pipe(uglify())
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(tsTestConfig.dest));
 });
 
-// Set a watch task
+// Watching
 gulp.task('watch', [tsConfig.task, tsTestConfig.task], function() {
     gulp.watch(tsConfig.src, [tsConfig.task]);
     gulp.watch(tsTestConfig.src, [tsTestConfig.task]);
+});
+
+// Testing
+gulp.task('test', [tsConfig.task, tsTestConfig.task], function() {
+    return gulp
+        .src(tsTestConfig.dest+'/**/*.js', {read: false})
+        .pipe(mocha({reporter: 'nyan'}));
 });
