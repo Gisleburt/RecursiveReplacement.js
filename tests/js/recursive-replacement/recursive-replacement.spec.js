@@ -4,9 +4,9 @@ var RecursiveReplacement = require('../../../js/recursive-replacement/recursive-
 describe('We expect all functions of RecursiveReplacement to work',
     function() {
 
-        it('This string contains {{ one }} replacement', function() {
+        it('We can detect one or more replacements in a string', function() {
 
-            assert.isTrue(
+            assert.isFalse(
                 RecursiveReplacement.doestStringContainReplacements(
                     'This string contains no replacements'
                 )
@@ -20,7 +20,7 @@ describe('We expect all functions of RecursiveReplacement to work',
 
             assert.isTrue(
                 RecursiveReplacement.doestStringContainReplacements(
-                    'This string contains one replacement with {{ nospace }}'
+                    'This string contains one replacement with {{nospace}}'
                 )
             );
 
@@ -36,36 +36,23 @@ describe('We expect all functions of RecursiveReplacement to work',
                 )
             );
 
-            assert.isTrue(
+            assert.isFalse(
                 RecursiveReplacement.doestStringContainReplacements(
                     'This string contains {{ no }} mathcing replacements', 'bb dd'
                 )
             );
         });
 
+        xit('We can find a replacement in RecursiveData', function() {
+            assert.isTrue(false);
+        });
 
-        describe('We can find a replacement in RecursiveData',
-            function() {
-                xit('true is true', function() {
-                    assert.isTrue(false);
-                })
-            }
-        );
+        xit('We can replace a replacement in a string', function() {
+            assert.isTrue(false);
+        });
 
-        describe('We can replace a replacement in a string',
-            function() {
-                xit('true is true', function() {
-                    assert.isTrue(false);
-                })
-            }
-        );
-
-        describe('We can replace a replacement in replacement in a string',
-            function() {
-                xit('true is true', function() {
-                    assert.isTrue(false);
-                })
-            }
-        );
+        xit('We can replace a replacement in replacement in a string', function() {
+            assert.isTrue(false);
+        });
     }
 );
