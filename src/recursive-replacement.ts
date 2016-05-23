@@ -54,7 +54,7 @@ module RecursiveReplacement {
          * @return {string[]}
          */
         public static getReplacementsInString(testString:string, delimiter:string = '{{ }}') {
-
+            
         }
 
         /**

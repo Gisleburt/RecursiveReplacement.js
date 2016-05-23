@@ -2,7 +2,7 @@
   "name": "recursive-replacement",
   "version": "0.0.0",
   "description": "Recursively replaces a string.",
-  "main": "gulpfile.js",
+  "main": "src/recursive-replacement.js",
   "scripts": {
     "test": "gulp test"
   },
