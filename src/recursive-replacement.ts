@@ -54,7 +54,26 @@ module RecursiveReplacement {
          * @return {string[]}
          */
         public static getReplacementsInString(testString:string, delimiter:string = '{{ }}') {
-            
+            // Check correct parameter usage
+            if((typeof testString) !== 'string') {
+                throw new Error("The first parameter of 'getReplacementsInString' must be a string");
+            }
+            if((typeof delimiter) !== 'string') {
+                throw new Error("The second parameter of 'getReplacementsInString' must be a string");
+            }
+            let parts = delimiter.split(' ');
+            if(parts.length != 2) {
+                throw new Error("The second parameter of 'getReplacementsInString' must contain a single space");
+            }
+
+            // If the delimiter were 'bb dd' this is /bb((.(?!dd))+.)dd/g
+            let regexp = new RegExp(parts[0]+"((.(?!"+parts[1]+"))+.)"+parts[1], "g");
+            let result = [];
+            let match;
+            while(match = regexp.exec(testString)) {
+                result.push(match[1].trim());
+            }
+            return result;
         }
 
         /**
