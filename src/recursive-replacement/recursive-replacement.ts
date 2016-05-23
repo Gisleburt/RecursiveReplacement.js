@@ -27,7 +27,22 @@ module RecursiveReplacement {
          * @return {boolean}
          */
         public static doestStringContainReplacements(testString:string, delimiter:string = '{{ }}') {
+            // Check correct parameter usage
+            if((typeof testString) !== 'string') {
+                throw new Error("The first parameter of 'doestStringContainReplacements' must be a string");
+            }
+            if((typeof delimiter) !== 'string') {
+                throw new Error("The second parameter of 'doestStringContainReplacements' must be a string");
+            }
+            let parts = delimiter.split(' ');
+            if(parts.length != 2) {
+                throw new Error("The second parameter of 'doestStringContainReplacements' must contain a single space");
+            }
 
+            // Are there any replacements in this string?
+            // If the delimiter were 'bb dd' this is /bb((.(?!dd))+.)dd/g
+            let regexp = new RegExp(parts[0]+"((.(?!"+parts[1]+"))+.)"+parts[1], "g");
+            return testString.match(regexp).length > 0;
         }
 
         /**
