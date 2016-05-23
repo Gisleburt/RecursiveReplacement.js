@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var RecursiveReplacement = require('../../../js/recursive-replacement/recursive-replacement.js').RecursiveReplacement;
+var RecursiveReplacement = require('../../src/recursive-replacement/recursive-replacement.js').RecursiveReplacement;
 
 describe('We expect all functions of RecursiveReplacement to work',
     function() {

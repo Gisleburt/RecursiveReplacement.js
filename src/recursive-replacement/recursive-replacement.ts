@@ -42,7 +42,8 @@ module RecursiveReplacement {
             // Are there any replacements in this string?
             // If the delimiter were 'bb dd' this is /bb((.(?!dd))+.)dd/g
             let regexp = new RegExp(parts[0]+"((.(?!"+parts[1]+"))+.)"+parts[1], "g");
-            return testString.match(regexp).length > 0;
+            let result = testString.match(regexp);
+            return !!result && result.length > 0;
         }
 
         /**
